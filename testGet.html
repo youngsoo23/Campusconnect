@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+    $.getJSON("php/allUsers.php", function(data){
+        var user_data = '';
+        $.each(data, function(key, value){
+            if(value.AcademicYear === "Senior"){
+                user_data += '<tr>';
+                user_data += '<td>' + value.ID + '</td>';
+                user_data += '<td>' + value.Email + '</td>';
+                user_data += '<td>' + value.FirstName + '</td>';
+                user_data += '<td>' + value.LastName + '</td>';
+                user_data += '<td>' + value.Department + '</td>';
+                user_data += '<td>' + value.AcademicYear + '</td>';
+                user_data += '</tr>';
+            }
+        });
+        $('#userTable').append(user_data);
+    });
+});
+</script>
+<style>
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+</style>
+</head>
+<body>
+
+    <h2>User Table</h2>
+    
+    <table id="userTable">
+      <tr><script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <th>ID</th>
+        <th>Email</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Department</th>
+        <th>Year</th>
+      </tr>
+    </table>
+    
+</body>
+</html>
+    

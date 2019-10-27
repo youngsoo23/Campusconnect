@@ -1,0 +1,370 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Campus Connect</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/font-awesome.css" rel="stylesheet">
+    <link href="css/ekko-lightbox.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  </head>
+
+  <body>
+
+  <header>
+    <div class="container">
+      <font size=6><b>Campus Connect</b></font>
+      <form class="form-inline">
+        <div class="form-group">
+          <label class="sr-only" for="input_email">Email address</label>
+          <input type="email" class="form-control" id="login_email" name="login_email" placeholder="Email"/>
+        </div>
+        <div class="form-group">
+          <label class="sr-only" for="input_password">Password</label>
+          <input type="password" class="form-control" id="login_password" name="login_password" placeholder="Password">
+        </div>
+        <button class="btn btn-default" id="quickstart-sign-in" name="signin">Sign In</button><br/>
+        <div>
+          <div class="col-xs-5">
+          </div>
+          <button type="button" class="btn btn-link btn-sm" id="quickstart-password-reset" name="verify-email"><a>Reset password</a></button>
+        </div>
+      </form>
+    </div>
+  </header>
+
+    <section>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <h3 class="page-header">Get connected with your campus!</h3>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-8">
+            <img class="mySlides w3-animate-fading" src="img/csub1.jpg" height= "350"; width="700" style = "padding:1px;
+    border-radius: 30px;
+   background-color:#fff;">
+            <img class="mySlides w3-animate-fading" src="img/csub2.png" height= "350"; width="700" style = "padding:1px;
+    border-radius: 30px;
+   background-color:#fff;">
+            <img class="mySlides w3-animate-fading" src="img/csub3.jpg" height= "350"; width="700" style = "padding:1px;
+   border-radius: 30px;
+   background-color:#fff;">
+            <img class="mySlides w3-animate-fading" src="img/csub4.jpg" height= "350"; width="700" style = "padding:1px;
+    border-radius: 30px;
+   background-color:#fff;">
+            <img class="mySlides w3-animate-fading" src="img/csub5.jpg" height= "350"; width="700" style = "padding:1px;
+    border-radius: 30px;
+   background-color:#fff;">
+            <img class="mySlides w3-animate-fading" src="img/csub6.jpg" height= "350"; width="700" style = "padding:1px;
+    border-radius: 30px;
+   background-color:#fff;">
+            <img class="mySlides w3-animate-fading" src="img/csub7.jpg" height= "350"; width="700" style = "padding:1px;
+   border-radius: 30px;
+   background-color:#fff;">
+          </div>
+          <script>
+          var myIndex = 0;
+          carousel();
+
+          function carousel() {
+              var i;
+              var x = document.getElementsByClassName("mySlides");
+              for (i = 0; i < x.length; i++) {
+                 x[i].style.display = "none";  
+              }
+              myIndex++;
+              if (myIndex > x.length) {myIndex = 1}    
+              x[myIndex-1].style.display = "block";  
+              setTimeout(carousel, 9000);    
+          }
+          </script>
+          <div class="w3-containe">
+            <!--<div class="container">-->    
+              <h2>Sign up</h2>  
+
+              <input class="w3-input" style="display:inline;width:200px;" type="text" id="signup_email" name="signup_email" placeholder="Email"/>
+              <br/>
+              <input class="w3-input" style="display:inline;width:200px;" type="text" id="signup_fname" name="signup_fname" placeholder="First name"/>
+              <br/>
+              <input class="w3-input" style="display:inline;width:200px;" type="text" id="signup_lname" name="signup_lname" placeholder="Last name"/>
+              <br/>
+              <input class="w3-input" style="display:inline;width:200px;" type="password" id="signup_password" name="signup_password" placeholder="Password"/>
+              <br/>
+              <input class="w3-input" style="display:inline;width:200px;" type="password" id="signup_password2" name="signup_password2" placeholder="Confirm Password"/>
+              <br/><br/>
+              <button class="mdl-button mdl-js-button mdl-button--raised" id="quickstart-sign-up" name="signup">Sign Up</button>
+              &nbsp;&nbsp;&nbsp;
+              <button class="mdl-button mdl-js-button mdl-button--raised" disabled id="quickstart-verify-email" name="verify-email">Send Email Verification</button>
+            <!--</div>-->
+          </div>
+        </div>          
+      </div>
+    </section>
+
+    <footer>
+      <div class="container">
+        <p>Campus Connect &copy 2018</p>
+      </div>
+    </footer>
+    <script type="text/javascript">
+      
+    </script>
+    <!--Firebase-->
+    <script src="/__/firebase/4.0.0/firebase-app.js"></script>
+    <script src="/__/firebase/4.0.0/firebase-auth.js"></script>
+    <script src="/__/firebase/init.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.10.1/firebase.js"></script>
+      <script>
+        // Initialize Firebase
+        var config = {
+          apiKey: "AIzaSyDJDK6Hba6JzqH6gfKTEqmaV6_oYZ1RNqU",
+          authDomain: "campusconnect-312df.firebaseapp.com",
+          databaseURL: "https://campusconnect-312df.firebaseio.com",
+          projectId: "campusconnect-312df",
+          storageBucket: "campusconnect-312df.appspot.com",
+          messagingSenderId: "625897015165"
+        };
+        firebase.initializeApp(config);
+      </script>
+
+    <script type="text/javascript">
+      /**
+       * Handles the sign in button press.
+       */
+      function toggleSignIn() {
+        if (firebase.auth().currentUser) {
+          // Signout
+          firebase.auth().signOut();
+        } else {
+          var email = document.getElementById('login_email').value;
+          var password = document.getElementById('login_password').value;
+          if (email.length < 1) {
+            alert('Please enter an email address.');
+            return;
+          }
+          if (password.length < 1) {
+            alert('Please enter a password.');
+            return;
+          }
+          // Sign in with email and pass.
+          firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
+            // Handle Errors here.
+            var errorCode = error.code;
+            var errorMessage = error.message;
+            if (errorCode === 'auth/wrong-password') {
+              alert('Password is incorrect.');
+            } else {
+              alert('An account for this e-mail does not exist');
+            }
+            console.log(error);
+            document.getElementById('quickstart-sign-in').disabled = false;
+          });
+        }
+        document.getElementById('quickstart-sign-in').disabled = true;
+      }
+      /**
+       * Handles the sign up button press.
+       */
+      function handleSignUp() {
+        var email = document.getElementById('signup_email').value;
+        var password = document.getElementById('signup_password').value;
+        var password2 = document.getElementById('signup_password2').value;
+
+        if (email.length < 4) {
+          alert('Please enter an email address.');
+          return;
+        } else if (!email.endsWith("@csub.edu")) {
+          alert('You must sign up using your school email address.');
+          return;
+        }
+        if (password.length < 4) {
+          alert('Your password is too short (minimum 6 characters)');
+          return;
+        }
+        if (password != password2) {
+          alert('The passwords you entered do not match.');
+          return;
+        }
+        // Sign in with email and pass.
+        firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
+          // Handle Errors here.
+          var errorCode = error.code;
+          var errorMessage = error.message;
+          // [START_EXCLUDE]
+          if (errorCode == 'auth/weak-password') {
+            alert('The password is too weak.');
+          } else {
+            alert(errorMessage);
+          }
+          console.log(error);
+          // [END_EXCLUDE]
+        });
+      }
+
+        /**
+       * Sends an email verification to the user.
+       */
+      function sendEmailVerification() {
+        firebase.auth().onAuthStateChanged(function(user) {
+          var url_string = window.location.href
+          var url = new URL(url_string);
+          var id = user.uid;
+          var userID = JSON.stringify({"ID": id});
+          var user_data = '';
+          $.post("php/getUser.php", userID,
+              function(data){
+                  $.each(data, function(key, value){
+                    if (value.VerifySent != 1) {
+                      firebase.auth().currentUser.sendEmailVerification().then(function() {
+                        // Email Verification sent!
+                        alert('Email verification sent!');
+                      });
+                        // set VerifySent to 1
+                    } else if (value.VerifySent == 1) {
+                      alert('Please verify your email');
+                    }
+                  });
+          },"json");
+        });
+      }
+      function sendPasswordReset() {
+        var email = document.getElementById('login_email').value;
+        // [START sendpasswordemail]
+        firebase.auth().sendPasswordResetEmail(email).then(function() {
+          // Password Reset Email Sent!
+          // [START_EXCLUDE]
+          alert('Password Reset Email Sent!');
+          // [END_EXCLUDE]
+        }).catch(function(error) {
+          // Handle Errors here.
+          var errorCode = error.code;
+          var errorMessage = error.message;
+          // [START_EXCLUDE]
+          if (errorCode == 'auth/invalid-email') {
+            alert('Invalid e-mail or password.');
+          } else if (errorCode == 'auth/user-not-found') {
+            alert('Invalid e-mail or password.');
+          }
+          console.log(error);
+          // [END_EXCLUDE]
+        });
+        // [END sendpasswordemail];
+      }
+      /**
+       * initApp handles setting up UI event listeners and registering Firebase auth listeners:
+       *  - firebase.auth().onAuthStateChanged: This listener is called when the user is signed in or
+       *    out, and that is where we update the UI.
+       */      
+      function initApp() {
+        // Listening for auth state changes.
+        firebase.auth().onAuthStateChanged(function(user) {
+          document.getElementById('quickstart-verify-email').disabled = true;
+          if (user) {
+            // User is signed in.
+            var email = user.email;
+            var emailVerified = user.emailVerified;
+            var uid = user.uid;
+            var found = 0;
+
+            //alert('User not found in database');
+            var fname = document.getElementById('signup_fname').value;
+            var lname = document.getElementById('signup_lname').value;
+            var user = JSON.stringify({"ID": uid, "Email" : email, "FirstName" : fname, "LastName" : lname});
+            $.post("php/addNewUser.php", user,
+              function(data){
+              },"text");
+
+            //alert("test1");
+            // check if user is already in database (or logging in for first time)
+            /*$.getJSON("allUsers.php", function(data){
+              var user_data = '';
+              $.each(data, function(key, value){
+                  if(value.ID === uid){
+                    //alert('Found user in database');
+                    found = 1;
+                  }
+              });
+              //alert("test2");
+              if (!found) {
+              alert('User not found in database');
+                var fname = document.getElementById('signup_fname').value;
+                var lname = document.getElementById('signup_lname').value;
+                var user = JSON.stringify({"ID": uid, "Email" : email, "FirstName" : fname, "LastName" : lname});
+                $.post("addNewUser.php", user,
+                  function(data){
+                  },"text");
+              }
+              // need wait time here
+              //callFunction(uid, found);
+            });*/
+
+            // need wait time here
+            /*if (!found) {
+              //alert('User not found in database');
+              var fname = document.getElementById('signup_fname').value;
+              var lname = document.getElementById('signup_lname').value;
+              var user = JSON.stringify({"ID": uid, "Email" : email, "FirstName" : fname, "LastName" : lname});
+              $.post("addNewUser.php", user,
+                function(data){
+                },"text");
+            }*/
+
+            window.location = 'home.html';
+            document.getElementById('quickstart-sign-in-status').textContent = 'Signed in';
+            document.getElementById('quickstart-sign-in').textContent = 'Sign out';
+            document.getElementById('quickstart-account-details').textContent = JSON.stringify(user, null, '  ');
+            if (!emailVerified) {
+              document.getElementById('quickstart-verify-email').disabled = false;
+            }
+          } else {
+            // User is signed out.
+            document.getElementById('quickstart-sign-in-status').textContent = 'Signed out';
+            document.getElementById('quickstart-sign-in').textContent = 'Sign in';
+            document.getElementById('quickstart-account-details').textContent = 'null';
+            //window.location = 'index.html';
+          }
+          document.getElementById('quickstart-sign-in').disabled = false;
+        });
+        document.getElementById('quickstart-sign-in').addEventListener('click', toggleSignIn, false);
+        document.getElementById('quickstart-sign-up').addEventListener('click', handleSignUp, false);
+        document.getElementById('quickstart-verify-email').addEventListener('click', sendEmailVerification, false);
+        document.getElementById('quickstart-password-reset').addEventListener('click', sendPasswordReset, false);
+      }
+      window.onload = function() {
+        initApp();
+      };
+
+      function callFunction(uid, found) {
+          if (!found) {
+            alert('User not found in database');
+            //alert(fname);
+            var user = JSON.stringify({"ID": uid, "Email" : email});
+            $.post("php/addNewUser.php", user,
+              function(data){
+              },"text");
+          }
+      }
+    </script>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <script src="//static.codepen.io/assets/common/stopExecutionOnTimeout-b2a7b3fe212eaa732349046d8416e00a9dec26eb7fd347590fbced3ab38af52e.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-validator/0.4.5/js/bootstrapvalidator.min.js"></script>
+  </body>
+</html>

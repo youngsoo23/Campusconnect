@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+ $(document).ready(function(){
+    var userID = 'oxNslrEChqWNpnMYCFE5nmK3Go82';
+    var user = JSON.stringify({"ID" : userID});
+    var messages = [];
+    var messageCount = 0;
+    $.post("getMessages.php", user,
+        function(data){
+            $.each(JSON.parse(data), function(key, value){
+                messages.push({fname:value.FirstName, lname:value.LastName, body:value.Body});
+            });
+            var messageCount = Object.keys(messages).length;
+            $("#newMessages").append("You have " + messageCount + " new messages.    ");
+            var showNew = '';
+            var i;
+            console.log(messages);
+            for(i = 0; i < messageCount; i++){
+                showNew += '<tr>';
+                showNew += '<td>' + messages[i].fname + " " + messages[i].lname + '</td>';
+                showNew += '<td>' + messages[i].body + '</td>';
+                showNew += '</tr>';
+            }
+            $('#messageTable').append(showNew);
+    });
+
+    $("#Submit").click(function(){
+        var sender = $("#sender").val();
+        var receiver = $("#receiver").val();
+        var body = $("textarea#message").val();
+        var messageData = JSON.stringify({"SenderID" : sender, "ReceiverID" : receiver, "Body" : body});
+        event.preventDefault();
+        $.post("php/sendMessage.php", messageData,
+            function(data){
+                alert(data);
+        });
+    });
+});
+</script>
+<style>
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+</style>
+</head>
+
+<body>
+
+    <h2>HTML Forms</h2>
+    
+    <form>
+      From:<br>
+      <input type="text" name="firstname" value="2QMVjsU7ZFYQSA6OvMiqQBiudyx1" id="sender">
+      <br>
+      Send To:<br>
+      <input type="text" name="lastname" value="oxNslrEChqWNpnMYCFE5nmK3Go82" id="receiver"><br>
+      Message:<br>
+      <textarea name="message" cols="40" rows="5" id="message"></textarea>
+      <br><br>
+      <button type="button" id="Submit">SendMessage</button>
+    </form>
+
+    <div id="newMessages"><br><br>
+    </div>
+    <table id="messageTable">
+        <tr>
+            <th>From</th>
+            <th>Message</th>
+        </tr>
+    </table>
+</body>
+</html>

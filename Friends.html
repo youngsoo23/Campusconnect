@@ -1,0 +1,265 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Campus Connect - Friends</title>
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/font-awesome.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="js/bootstrap.js"></script>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <a href="home.html"><font size=6 href=><b>Campus Connect</b></font></a>
+      <span class="pull-right">
+        <br/>
+        <!-- /.dropdown -->
+        <ul class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
+            </a>
+            <ul class="dropdown-menu dropdown-user">
+                <li><a href="account.html"><i class="fa fa-user fa-fw"></i> Account</a></li>
+                <li><a href="messages.html"><i class="fa fa-envelope fa-fw"></i> Messages</a></li>
+                <li class="divider"></li>
+                <li><a href="index.html" id="quickstart-sign-in"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                </li>
+            </ul>
+            <!-- /.dropdown-user -->
+        </ul>
+      </span>
+    </div>
+  </header>
+  <nav class="navbar navbar-default">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li><a href="home.html">Home</a></li>
+            <li><a href="students.html">Students</a></li>
+            <li><a href="groups.html">Groups</a></li>
+            <li class="active"><a href="Friends.html">Friends</a></li>
+            <li><a href="Messages.html">Messages</a></li>
+            <li><a href="socialMedia.html">Social Media</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+    <section>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-8">
+            <div class="friends">
+            </div>
+          </div>
+         <div class="col-md-4">
+            <div style=" background-color: #fff; padding: 0px 0px 0px 0px; margin: 0px 0px 0px 0px; box-shadow: 0 2px 4px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.1)!important">
+               <div class="panel panel-default groups">
+                <div class="panel-heading">
+                  <h3 style="color: white;" class="panel-title">Search</h3>
+                </div>
+                <div class="panel-body">
+                  <form class="form" method="post">
+                    <div class="row">
+                      <div class="col-md-8">
+                        <input style="margin: 5px 5px 5px 5px;" class="form-control mb-2 mr-sm-2" type="text" id=in_name placeholder=" Name"/>
+                        <input style="margin: 5px 5px 5px 5px;" class="text form-control mb-2 mr-sm-2" id=in_major placeholder=" Major"/>
+                      </div>
+                      <div class="col-md-4">                    
+                        <div style="margin: 5px 5px 5px 5px;" class="dropdown">
+                          <button class="btn btn-default btn-block dropdown-toggle" type="button" data-toggle="dropdown">
+                            <span class="pull-left">Year</span>
+                            <span class="pull-right caret"></span></button>
+                          <ul style="height: 100px; width: 100px;" class="dropdown-menu">
+                            <li><a href="#">Freshman</a></li>
+                            <li><a href="#">Sophomore</a></li>
+                            <li><a href="#">Junior</a></li>
+                            <li><a href="#">Senior</a></li>
+                          </ul>
+                        </div>
+                        <div style="margin: 5px 5px 5px 5px;" class="dropdown">
+                          <button class="btn btn-default btn-block dropdown-toggle" type="button" data-toggle="dropdown">
+                            <span class="pull-left">Sex</span>
+                            <span class="pull-right caret"></span></button>
+                          <ul class="dropdown-menu">
+                            <li><a href="#">Female</a></li>
+                            <li><a href="#">Male</a></li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                    <hr>
+                  	</form>  
+                    <a href="#" class="btn btn-primary">Clear</a>
+                    <button class="btn btn-primary" style="float: right;" onclick="update_friends()">Search Friends</button>
+                  
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+        <footer>
+      <div class="container">
+        <p>Campus Connect &copy 2018</p>
+      </div>
+    </footer>
+    </section> 
+
+
+    <!--Firebase-->
+    <script src="/__/firebase/4.0.0/firebase-app.js"></script>
+    <script src="/__/firebase/4.0.0/firebase-auth.js"></script>
+    <script src="/__/firebase/init.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.10.1/firebase.js"></script>
+    <script>
+      // Initialize Firebase
+      var config = {
+        apiKey: "AIzaSyDJDK6Hba6JzqH6gfKTEqmaV6_oYZ1RNqU",
+        authDomain: "campusconnect-312df.firebaseapp.com",
+        databaseURL: "https://campusconnect-312df.firebaseio.com",
+        projectId: "campusconnect-312df",
+        storageBucket: "campusconnect-312df.appspot.com",
+        messagingSenderId: "625897015165"
+      };
+      firebase.initializeApp(config);
+    </script>
+    <script type="text/javascript">
+      function toggleSignIn() {
+        if (firebase.auth().currentUser) {
+          // [START signout]
+          firebase.auth().signOut();
+          // [END signout]
+          window.location = 'index.html';
+        }
+      }
+
+      /**
+       * initApp handles setting up UI event listeners and registering Firebase auth listeners:
+       *  - firebase.auth().onAuthStateChanged: This listener is called when the user is signed in or
+       *    out, and that is where we update the UI.
+       */
+      function initApp() {
+        // Listening for auth state changes.
+        firebase.auth().onAuthStateChanged(function(user) {
+          if (user) {
+            // User is signed in.
+            var displayName = user.displayName;
+            var email = user.email;
+            var emailVerified = user.emailVerified;
+            var photoURL = user.photoURL;
+            var isAnonymous = user.isAnonymous;
+            var uid = user.uid;
+            var providerData = user.providerData;
+          } else {
+            // User is signed out.
+            alert('Logout successful');
+          }
+        });
+        document.getElementById('quickstart-sign-in').addEventListener('click', toggleSignIn, false);
+      }
+      window.onload = function() {
+        initApp();
+      };
+    </script>
+
+    <script>
+      firebase.auth().onAuthStateChanged(function(user) {
+        $(document).ready(function(){
+          var uid;
+          if (user) {
+            uid = user.uid;
+          }  
+          var userID = "";
+          userID = JSON.stringify({"ID": uid});
+          var friends = "";
+          friends += "<h1 class='page-header'>Friends</h1>"; 
+          $.post("php/friendsWith.php", userID, function(data){
+            $.each(JSON.parse(data), function(key, value){
+              //console.log("for");                
+              friends += "<div class='row group-item'> \
+              <div class='col-md-2'> \
+                <img src='img/profiles/" + value.Pic + "' style='height:60px; width:60px' alt=''> \
+              </div> \
+              <div class='col-md-5'>";
+              friends += "<a href='profile.html?id=" + value.ID + "'<font size='+1'><b>"+ value.FirstName + " " + value.LastName + " " +"</b></font></a><br/>";
+              friends += "<font size='-1'><b>Major: </b>" + value.Major;
+              friends += "<br/>";
+              friends += "<b>Year: </b>" + value.AcademicYear + "</font>";
+              friends += "<br/> \
+                </div> \
+                <div class='col-md-5'> \
+                  <span class='pull-right'> \
+                    <br/> \
+                    <a href='message-thread.html?id=" + value.ID + "' class='btn btn-default btn-sm'><i class='fa fa-envelope'></i> Message</a> \
+                  </span> \
+                </div> \
+              </div>";
+            }); 
+            $('.friends').append(friends);
+          });
+        });
+      });
+
+      function update_friends() {
+        firebase.auth().onAuthStateChanged(function(user) {  
+          var uid = "";
+          if (user) {
+            uid = user.uid;
+          }  
+
+          var userID = "";
+          userID = JSON.stringify({"ID": uid});
+          var friends = "";
+          $(".friends").html("");
+          $.post("php/friendsWith.php", userID, function(data){
+             var nameInput = document.getElementById("in_name").value.toLowerCase();
+             var majorInput = document.getElementById("in_major").value.toLowerCase();
+             var search_data = '';
+             search_data += "<h1 class='page-header'>Friends</h1>";
+              $.each(JSON.parse(data), function(key, value){
+                if ((value.FirstName.toLowerCase().search(nameInput) != -1 || value.LastName.toLowerCase().search(nameInput) != -1)
+                    && (value.Major.toLowerCase().search(majorInput) != -1 || value.Major === "")) {
+                    search_data += "<div class='row member-row'> \
+                      <div class='col-md-2'> \
+                        <img src='img/profiles/" + value.Pic + "' style='height:60px; width:60px' alt=''> \
+                      </div> \
+                      <div class='col-md-5'>";
+                      search_data += "<a href='profile.html?id=" + value.ID + "'<font size='+1'><b>"+ value.FirstName + " " + value.LastName + " " +"</b></font></a><br/>";
+                      search_data += "<font size='-1'><b>Major: </b>" + value.Major;
+                      search_data += "<br/>";
+                      search_data += "<b>Year: </b>" + value.AcademicYear + "</font>";
+                      search_data +=  "<br/> \
+                        </div> \
+                        <div class='col-md-5'> \
+                          <span class='pull-right'> \
+                            <br/> \
+                            <a href='message-thread.html?id=" + value.ID + "' class='btn btn-default btn-sm'><i class='fa fa-envelope'></i> Message</a> \
+                          </span> \
+                        </div> \
+                      </div>";
+                }
+              }); 
+              $('.friends').append(search_data);
+          });
+        });
+      }
+    </script>
+  </body>
+</html>

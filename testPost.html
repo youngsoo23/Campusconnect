@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+ $(document).ready(function(){
+    var user = JSON.stringify({"ID": "1234", "Email" : "cc@csub.edu", "FirstName" : "John", "LastName" : "Doe", "Major" : "CS", "AcademicYear" : "Senior"});
+    var user_data = '';
+    $("button").click(function(){
+        $.post("php/addUsers.php", user,
+            function(data){
+                alert(data);
+        },"text");
+    });
+});
+</script>
+<style>
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+</style>
+</head>
+<body>
+
+<button>Add John Doe</button>
+
+</body>
+</html>
